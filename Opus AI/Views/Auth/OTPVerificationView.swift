@@ -2,7 +2,8 @@ import SwiftUI
 
 struct OTPVerificationView: View {
     @State private var code = ""
-    private let solidGreen = Color(red: 0.184, green: 0.541, blue: 0.420)
+    @State private var navigateToAssistant = false
+    private let solidGreen = Color("SolidGreen")
 
     var body: some View {
         ZStack {
@@ -37,7 +38,7 @@ struct OTPVerificationView: View {
                     .padding(.horizontal, 40)
 
                 Button {
-                    // verify OTP — no backend yet
+                    navigateToAssistant = true
                 } label: {
                     Text("Verificar")
                         .font(.body.bold())
@@ -47,13 +48,17 @@ struct OTPVerificationView: View {
                         .foregroundColor(.white)
                         .clipShape(Capsule())
                 }
-                .padding(.horizontal, 24)
+                .padding(.horizontal, 40)
 
                 Spacer()
             }
         }
         .navigationTitle("Verificación")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(isPresented: $navigateToAssistant) {
+            AssistantView()
+                .navigationBarBackButtonHidden(true)
+        }
     }
 }
 

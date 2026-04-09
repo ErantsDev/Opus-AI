@@ -4,7 +4,7 @@ struct LoginView: View {
     @State private var navigateToOTP = false
     @State private var email = ""
     @State private var emailTouched = false
-    private let solidGreen = Color(red: 0.184, green: 0.541, blue: 0.420)
+    private let solidGreen = Color("SolidGreen")
 
     private var emailIsValid: Bool {
         let pattern = #"^[A-Z0-9a-z._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"#
@@ -29,12 +29,18 @@ struct LoginView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(maxWidth: geo.size.width * 0.35)
+                                .shadow(
+                                        color: Color.black.opacity(0.3), // Control de opacidad
+                                        radius: 5,                       // Difuminado de la sombra
+                                        x: 0,                            // Mantener centrada horizontalmente
+                                        y: 10                            // Desplazamiento positivo hacia abajo
+                                    )
                             Spacer()
                         }
                         
                     }
                     .frame(height: 120)
-                    .padding(.top, 100)
+                    .padding(.top, 130)
                     Spacer().frame(height: 48)
 
                     // Auth buttons

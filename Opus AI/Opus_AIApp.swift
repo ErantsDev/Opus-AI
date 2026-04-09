@@ -11,7 +11,7 @@ import SwiftUI
 struct Opus_AIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
         }
     }
 }
